@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showMessage("success", "Inicio de sesión exitoso");
 
         setTimeout(() => {
-          window.location.href = "../HTML/Login.html";
+          window.location.href = "../HTML/searchVehicles.html";
         }, 900);
       }
 
