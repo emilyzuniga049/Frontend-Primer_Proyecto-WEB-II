@@ -50,8 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    let oldText = "";
     if (btn) {
-      const oldText = btn.textContent;
+      oldText = btn.textContent;
       btn.disabled = true;
       btn.textContent = "Cargando...";
     }
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showMessage("success", "Registro exitoso, ya puedes iniciar sesión.");
 
         setTimeout(() => {
-          window.location.href = "../HTML/Login.html";
+          window.location.href = "../HTML/login.html";
         }, 900);
 
       } else {
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showMessage("success", "Inicio de sesión exitoso");
 
         setTimeout(() => {
-          window.location.href = "../HTML/searchVehicles.html";
+          window.location.href = "../HTML/index.html";
         }, 900);
       }
 
