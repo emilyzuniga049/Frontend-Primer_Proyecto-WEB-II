@@ -241,6 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function goToVehicleDetail(id) {
-    
+    window.location.href = `vehicleDetails.html?id=${id}`;
   }
 });
