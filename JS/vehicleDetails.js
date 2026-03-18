@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let image = defaultCarImage;
 
     if (vehicle.image_path) {
-      image = vehicle.image_path;
+      image = "http://localhost:3000/" + vehicle.image_path;
     }
 
     let statusClass = "disponible";
