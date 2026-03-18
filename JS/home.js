@@ -2,15 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const publishBtn = document.getElementById("publishBtn");
   const heroPublishBtn = document.getElementById("heroPublishBtn");
   const loginNavBtn = document.getElementById("loginNavBtn");
-
-  const tokenBanner = document.getElementById("tokenBanner");
-  const tokenText = document.getElementById("tokenText");
   const logoutBtn = document.getElementById("logoutBtn");
 
-  const token = sessionStorage.getItem("token");
-
-  showTokenBanner(token);
-  updateLoginButton(token);
+  updateAuthButtons();
 
   if (publishBtn) {
     publishBtn.addEventListener("click", goToPublishOrLogin);
@@ -24,40 +18,42 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutBtn.addEventListener("click", logoutUser);
   }
 
-  function goToPublishOrLogin() {
+  function goToPublishOrLogin(event) {
     const currentToken = sessionStorage.getItem("token");
 
     if (!currentToken) {
-      window.location.href = "login.html?redirect=index";
+      event.preventDefault();
+      window.location.href = "./login.html";
       return;
     }
   }
 
-  function showTokenBanner(tokenValue) {
-    if (!tokenValue) {
-      tokenBanner.classList.add("hidden");
-      return;
-    }
+  function updateAuthButtons() {
+    const token = sessionStorage.getItem("token");
 
-    tokenBanner.classList.remove("hidden");
-    tokenText.textContent = tokenValue;
-  }
+    if (token) {
+      if (loginNavBtn) {
+        loginNavBtn.classList.add("hidden");
+      }
 
-  function updateLoginButton(tokenValue) {
-    if (!loginNavBtn) {
-      return;
-    }
+      if (logoutBtn) {
+        logoutBtn.classList.remove("hidden");
+      }
+    } else {
+      if (loginNavBtn) {
+        loginNavBtn.classList.remove("hidden");
+        loginNavBtn.textContent = "Iniciar sesión";
+        loginNavBtn.href = "./login.html";
+      }
 
-    if (tokenValue) {
-      loginNavBtn.textContent = "Sesión iniciada";
-      loginNavBtn.classList.remove("nav-login");
-      loginNavBtn.classList.add("active-link");
-      loginNavBtn.href = "./index.html";
+      if (logoutBtn) {
+        logoutBtn.classList.add("hidden");
+      }
     }
   }
 
   function logoutUser() {
     sessionStorage.removeItem("token");
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   }
 });
