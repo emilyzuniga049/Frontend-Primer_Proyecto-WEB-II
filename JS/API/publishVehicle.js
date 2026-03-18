@@ -1,8 +1,7 @@
-const VEHICLE_API = "http://localhost:3000/api/vehicle";
-const USER_API = "http://localhost:3000/api/auth/user";
+const API = "http://localhost:3000";
 
 async function getCurrentUser(token) {
-  const response = await fetch(USER_API, {
+  const response = await fetch(API + "/api/auth/user", {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -18,7 +17,7 @@ async function getCurrentUser(token) {
 }
 
 async function createVehicle(formData, token) {
-  const response = await fetch(VEHICLE_API, {
+  const response = await fetch(API + "/api/vehicle", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`
