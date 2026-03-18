@@ -146,12 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function createVehicleCard(vehicle) {
     let image = defaultCarImage;
     if (vehicle.image_path) {
-      image = vehicle.image_path;
+      image = "http://localhost:3000/" + vehicle.image_path;
     }
 
-    let status = "disponible";
+    let statusClass = "disponible";
     if (vehicle.status === "Vendido") {
-      status = "vendido";
+      statusClass = "vendido";
+    } else if (vehicle.status === "Disponible") {
+      statusClass = "disponible";
     }
     const description = getShortDescription(vehicle.description);
 
@@ -241,6 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function goToVehicleDetail(id) {
-    window.location.href = `vehicleDetails.html?id=${id}`;
+    window.location.href = `vehiclesDetails.html?id=${id}`;
   }
 });
