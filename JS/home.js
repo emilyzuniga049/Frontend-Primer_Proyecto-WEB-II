@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroPublishBtn = document.getElementById("heroPublishBtn");
   const loginNavBtn = document.getElementById("loginNavBtn");
   const logoutBtn = document.getElementById("logoutBtn");
+  const myVehiclesNavBtn = document.getElementById("myVehiclesNavBtn");
 
   updateAuthButtons();
 
@@ -39,6 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (logoutBtn) {
         logoutBtn.classList.remove("hidden");
       }
+
+      if (myVehiclesNavBtn) {
+        myVehiclesNavBtn.classList.remove("hidden");
+      }
     } else {
       if (loginNavBtn) {
         loginNavBtn.classList.remove("hidden");
@@ -48,6 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (logoutBtn) {
         logoutBtn.classList.add("hidden");
+      }
+
+      if (myVehiclesNavBtn) {
+        myVehiclesNavBtn.classList.add("hidden");
       }
     }
   }
